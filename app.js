@@ -4,12 +4,17 @@ const mongoose=require("mongoose");
 const port=8080;
 const Listing=require("./models/listing.js");
 const path=require("path");
+const ejsMate=require("ejs-mate");
 const methodOverride=require("method-override");
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
+//app.set('views', __dirname + '/views/layouts')
 app.set("views",path.join(__dirname,"views/listing"));
+//app.set("views",path.join(__dirname,"views/layouts"));
+app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
+app.engine('ejs', ejsMate);
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
 }
@@ -22,6 +27,9 @@ main()
 })
 app.listen(port,()=>{
     console.log(`server is listening through port ${port}`);
+})
+app.get("/",(req,res)=>{
+    res.send("Hi I am root");
 })
 //Index Route
 app.get("/listing",async(req,res)=>{
