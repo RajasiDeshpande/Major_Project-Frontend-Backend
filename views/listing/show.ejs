@@ -1,22 +1,35 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wanderlust</title>
-</head>
+</head> -->
+<% layout("boilerplate") -%>
 <body>
-    <h1><%=detail.title%></h1>
-    <ul>
-        <li><%=detail.description%></li>
-        <li>&#x20b9;<%=detail.price.toLocaleString("en-IN")%></li>
-        <li><%=detail.location%></li>
-        <li><%=detail.country%></li>
-        <a href="/listing/<%=detail._id%>/edit">Edit the listing</a>
-        <br><br>
-        <form method="POST" action="/listing/<%=detail._id%>?_method=DELETE">
-            <button>Delete this listing</button>
-        </form>
-    </ul>
+    <div class="card offset-2">
+        <h1 class="offset-1"><%=detail.title%></h1>
+        <img src="<%=detail.image%>" class="card-img-top show-img" alt="listing_image">
+        
+        <ul>
+            <b><li><%=detail.description%></li></b>
+            <b><li>&#x20b9;<%=detail.price.toLocaleString("en-IN")%></li></b>
+            <b><li><%=detail.location%></li></b>
+            <b><li><%=detail.country%></li></b>
+            <br>
+            <div class="row">
+                <div >
+                    <a href="/listing/<%=detail._id%>/edit" class="btn btn-dark col-7">Edit the listing</a>
+                </div>
+                <br>
+                <br>
+                <div>
+                    <form method="POST" action="/listing/<%=detail._id%>?_method=DELETE">
+                        <button class="btn btn-dark col-7 ">Delete this listing</button>
+                    </form>
+                </div>                
+            </div>
+        </ul>
+    </div>
 </body>
 </html>

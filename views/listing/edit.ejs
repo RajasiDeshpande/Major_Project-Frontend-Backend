@@ -1,26 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanderlust</title>
-</head>
-<body>
+<% layout("boilerplate") -%>
+<div class="row">
+    <div class="col-8 offset-2">
     <h1>Edit Listing</h1>
     <form method="POST" action="/listing/<%=detail._id%>?_method=PUT">
-        <input type="text" name="title" value="<%=detail.title%>">
+        
+        <div>
+            <label for="title" class="form-label">Title</label>
+            <input id="title" type="text" name="title" value="<%=detail.title%>" class="form-control">
+        </div>
         <br><br>
-        <textarea name="description"><%=detail.description%></textarea>
+        <div>
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="description" class="form-control"><%=detail.description%></textarea>
+        </div>
         <br><br>
-        <input type="text" name="image" value="<%=detail.image%>">
+        <div>
+            <label for="img" class="form-label">Image Link</label>
+            <input type="text" name="image" value="<%=detail.image%>" class="form-control" id="img">
+        </div>
         <br><br>
-        <input type="text" name="price" type="number" value="<%=detail.price%>">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="price" class="form-label">Price</label>
+                <input type="text" name="price" type="number" value="<%=detail.price%>" class="form-control">
+            </div>
+            <br><br>
+            <div class="col-md-8">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" name="country" type="text" value="<%=detail.country%>" class="form-control">
+            </div>
+        </div>
+        
         <br><br>
-        <input type="text" name="country" type="text" value="<%=detail.country%>">
+        <div>
+            <label for="form-label">Label</label>
+            <input type="text" name="location" type="text" value="<%=detail.location%>" class="form-control">
+        </div>
         <br><br>
-        <input type="text" name="location" type="text" value="<%=detail.location%>">
+        <button class="btn btn-dark">Edit</button>
         <br><br>
-        <button>Edit</button>
     </form>
-</body>
-</html>
+    <div>
+</div>
